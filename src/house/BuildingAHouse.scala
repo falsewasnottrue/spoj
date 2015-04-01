@@ -61,27 +61,21 @@ object Land {
 
 object BuildingAHouse extends App {
 
-//  1 1
-//  G
-//  2 2
-//  GS
-//  SG
-//  2 2
-//  GT
-//  GG
-//  5 8
+  import scala.io._
 
-  val plan =
-    "GGTGG" ::
-    "TGGGG" ::
-    "GSSGT" ::
-    "GGGGT" ::
-    "GWGGG" ::
-    "RGTRT" ::
-    "RTGWT" ::
-    "WTWGR" :: Nil
+  val lines = Source.fromFile("src/house/C-large-practice.in").getLines
+  lines.next
+  var c = 1
 
-  println(maxRect(plan))
+  while (lines.hasNext) {
+    val h = lines.next.split(" ")(1).toInt
+
+    val plan = Range(0, h).map(i => lines.next).toList
+    val res = maxRect(plan)
+
+    println("Case #" + c + ": " + res)
+    c = c + 1
+  }
 
   def maxRect(plan: List[String]): Int = {
     val land = Land(plan)
