@@ -7,7 +7,10 @@ object Primes extends App {
 
   def primes(from: Int, to: Int): Seq[Int] =
     for {
-      p <- from until to
-      if ((p == 2) || (2 to p).forall(i => p % i != 0))
-    } yield p
+      n <- from to to
+      if isPrime(n)
+    } yield n
+
+  def isPrime(n: Int): Boolean =
+    (n>1) && ((n == 2) || (2 until n).forall(i => n % i != 0))
 }
