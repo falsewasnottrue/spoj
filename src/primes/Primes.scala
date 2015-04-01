@@ -2,8 +2,12 @@ package primes
 
 object Primes extends App {
 
-  println(primes(1, 10))
-  println(primes(3, 5))
+  for (ln <- io.Source.stdin.getLines.drop(1)) {
+    var from = ln.split(" ")(0).toInt
+    var to = ln.split(" ")(1).toInt
+
+    primes(from, to).foreach(println(_))
+  }
 
   def primes(from: Int, to: Int): Seq[Int] =
     for {
