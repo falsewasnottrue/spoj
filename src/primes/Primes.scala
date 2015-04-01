@@ -16,5 +16,5 @@ object Primes extends App {
     } yield n
 
   def isPrime(n: Int): Boolean =
-    (n>1) && ((n == 2) || (2 until n).forall(i => n % i != 0))
+    (n>1) && ((n == 2) || (2 to Math.sqrt(n).toInt).forall(i => n % i != 0))
 }
